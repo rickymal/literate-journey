@@ -1,11 +1,12 @@
 import Head from 'next/head'
 import Layout, { siteTitle } from '../components/layout'
 import utilStyles from '../styles/utils.module.css'
-
+import {useRouter} from 'next/router'
 
 import { getSortedPostsData } from '../lib/posts'
+import Link from 'next/link'
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
   const allPostsData = getSortedPostsData()
   return {
     props: {
@@ -14,6 +15,14 @@ export async function getStaticProps() {
   }
 }
 /*
+export async function getStaticProps() {
+  const allPostsData = getSortedPostsData()
+  return {
+    props: {
+      allPostsData
+    }
+  }
+}
 export async function getServerSideProps(context){
   return {
     props : {
@@ -22,9 +31,15 @@ export async function getServerSideProps(context){
   }
 }
 */
-export default function Home({allPostsData}) {
-  console.log("sou ele aquele o grand eeu sou ");
-  console.log(allPostsData);
+export default function index({allPostsData}) {
+  const router = useRouter()
+
+  function handleRoute(){
+    router.push("/home")
+  }
+
+
+
   return (
     <Layout home>
       <Head>
@@ -53,6 +68,7 @@ export default function Home({allPostsData}) {
         </ul>
       </section>
 
+      <Link href = "/home">Home</Link>
     </Layout>
   )
 }
