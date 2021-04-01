@@ -1,0 +1,98 @@
+.circle_div {
+    width: 30px;
+    height: 30px;
+    background-color: blue;
+    margin: 5px;
+    border-radius: 50px;
+    border: brown;
+}
+
+.container_circle_options {
+    display: flex;
+    flex-direction: row;
+}
+
+div.textbox_field {
+    display: flex;
+    flex-direction: row;
+    height: 30px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+div.squared_div {
+    width: 30px;
+    height: auto;
+    background-color: #235E9D;
+    border: darkblue;
+}
+
+input.input_field {
+    height: auto;
+    border: darkblue;
+    background-color: #EBF2F5;
+}
+
+div.login_field {
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    justify-content: center;
+    align-items: center;
+    padding-left: 150px;
+    padding-right: 150px;
+}
+
+div.container {
+    align-items: center;
+    justify-content: center;
+    align-content: center;
+    height: 100vh;
+    width: 100vw;
+    position: absolute;
+    display: grid;
+}
+
+div.sub_container {
+    background-color: #EBF2F5;
+    align-items: center;
+    justify-content: center;
+    align-content: center;
+    padding : 30px;
+    display: flex;
+    flex-direction: column;
+}
+
+button.button_style {
+    background-color: #235E9D;
+    font-weight: bold;
+    color: #F5F5F5;
+    border: 0px;
+    height: 30px;
+    width: auto;
+    margin-top : 5px;
+
+}
+
+text.text_logar {
+    padding-bottom: 30px;
+    color: #B4B4B4;
+    
+
+}
+
+text.text_entrecom {
+    color : #7A7A7A;
+}
+
+
+text.smaller_text {
+    font-size: 15px;
+    margin-top : 20px;
+}
+
+text.register_link {
+    text-decoration: underline;
+    color : #235E9D;
+}

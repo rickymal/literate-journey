@@ -33,12 +33,9 @@ export async function getServerSideProps(context){
 */
 export default function index({allPostsData}) {
   const router = useRouter()
-
   function handleRoute(){
     router.push("/home")
   }
-
-
 
   return (
     <Layout home>
