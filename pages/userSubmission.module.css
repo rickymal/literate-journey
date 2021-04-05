@@ -1,0 +1,79 @@
+.container {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: row;
+    background-color: brown;
+    
+    justify-content: center;
+}
+
+.attachment_textbox_view {
+    background-color: bisque;
+}
+.third_dashboard {
+    display: flex;
+    flex-direction: row;
+    background-color: blue;
+}
+.dashboard_mainly {
+    display: flex;
+    flex-direction: column;
+    background-color: blueviolet;
+}
+.text_styles_default {
+    color : #7A7A7A;
+    font-size: 10px;
+}
+
+.text_submition {
+    color : #464749;
+    border: none;
+    margin-right: 5px;
+    margin-left : 5px;
+    font-size : 20px;
+}
+
+input.textbox {
+    color : black;
+    height: 10px;
+    width: auto;
+    background-color: #EBF2F5;
+    border: none;
+    margin-right: 5px;
+    margin-left : 5px;
+}
+
+textarea.textbox {
+
+    color : black;
+    flex : 1;
+    width: auto;
+    background-color: #EBF2F5;
+    border: none;
+    margin-right: 5px;
+    margin-left : 5px;
+    margin-bottom: 5px;
+}
+
+.partial_dashboard_view {
+    background-color: aqua;
+    display: flex;
+    flex-direction: column;
+
+}
+
+.attachment_button {
+    background-color: #E3792F;
+    align-items: center;
+    justify-content: center;
+    color: white;
+}
+
+.send_button {
+    background-color: #235E9D;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    
+}

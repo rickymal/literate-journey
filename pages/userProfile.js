@@ -10,16 +10,18 @@ export default function Main(){
                 width = {500}
                 height = {500}
                 alt = "Mecathon"
+                className = {s.logo_mecathon}
                 />
                 <text>Meu perfil</text>
 
                 <hr/>
-
-                <text>Equipes</text>
-                <text>Minha equipe</text>
-                <text>Mentorias</text>
-                <text>Submissão de projetos</text>
-                <text>Ajuda</text>
+                <div className = {s.options}>
+                    <text>Equipes</text>
+                    <text>Minha equipe</text>
+                    <text>Mentorias</text>
+                    <text>Submissão de projetos</text>
+                    <text>Ajuda</text>
+                </div>
 
             </div>
             <div className = {s.main_dashboard}>
@@ -30,7 +32,7 @@ export default function Main(){
                     
                 <div className = {s.wrgew}>
                     <text className = {s.team_status}>Atualmente você não está em nenhuma equipe</text>
-                    <text className = {s.create_team}>criar equipe (clique aqui)</text>
+                    <text className = {s.create_team}>criar equipe</text>
                 </div>
 
                 <div className = {s.second_dashboard}>
@@ -39,20 +41,32 @@ export default function Main(){
                         <text className = {s.user1}>Usuario 1</text>
                         <text className = {s.short_description}>Short user description</text>
                     </div>
-                    <div className = {s.horizontal_line}/>
-                    <hr id = {"horizontal_line"}/>
-                    <text>informações</text>
-                    <div className ={s.yyop}>
-                        <text className = {s.mainly_function}>Função principal</text>
-                        <text className = {s.descr_function}>Design UX/UI</text>
+                    <hr/>
+                    <div className = {s.tersw}>
+                        <text className = {s.txt_information}>informações</text>
+                        <div className ={s.yyop}>
+                            <text className = {s.mainly_function}>Função principal</text>
+                            <text className = {s.descr_function}>Design UX/UI</text>
+                        </div>
+                        <div className ={s.yyop}>
+                            <text className = {s.mainly_function}>Email</text>
+                            <text className = {s.descr_function}>henriquemauler@gmail.com</text>
+                        </div>
+                        <div className ={s.yyop}>
+                            <text className = {s.mainly_function}>Equipe atual</text>
+                            <text className = {s.descr_function}>Time X</text>
+                        </div>
+
                     </div>
-                    <text>descrição</text>
-                    <text className = {s.description}>lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum 
-                    lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum 
-                    lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum 
-                    lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum 
-                    </text>
-                    <hr id = {"horizontal_line"}/>
+                    <div className = {s.tersw_description}>
+                        <text className = {s.complete_lorem_description}>descrição</text>
+                        <text className = {s.description}>lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum 
+                        lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum 
+                        lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum 
+                        lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum 
+                        </text>
+                    </div>
+                    <hr/>
                 </div>
             </div>
         </div>
