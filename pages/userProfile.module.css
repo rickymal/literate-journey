@@ -12,6 +12,7 @@
     min-width: 100px;
     padding-left: 5px;
     padding-right: 5px;
+    max-width: 220px;
 }
 
 .sidebar text {

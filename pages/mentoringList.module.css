@@ -11,10 +11,11 @@
 .attachment_textbox_view {
     background-color: #EBF2F5;
 }
-.third_dashboard {
+.third_dashboard_edited {
     display: flex;
-    flex-direction: row;
-    
+    flex-direction: column;
+    min-width: 200px;
+    min-height: 200px;
     flex : 1;
     max-height: 90%;
     background-color: #FFFFFF;
@@ -34,6 +35,62 @@
     
 }
 
+
+div.mentoring_list {
+    display: flex;
+    flex-direction: column;
+}
+
+div.mentoring_list div {
+    display: flex;
+    flex-direction: row;
+    
+    padding: 0px 30px;
+
+}
+
+div.navbar_mentoring div.grouped_information_mentoring {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+div.navbar_mentoring div.grouped_information_mentoring text:first-child{
+    font-size: 50px;
+    color : green;
+    padding-left : 15px;
+}
+
+div.navbar_mentoring div.grouped_information_mentoring text:last-child{
+    font-size: 20px;
+    color : #7A7A7A;
+    padding-right : 15px;
+}
+
+div.mentoring_list div text {
+    font-size: 30px;
+    font-weight: bold;
+    color : #7A7A7A;
+}
+
+div.mentoring_list div {
+    justify-content: space-between;
+    padding-top: 50px;
+}
+
+div.option_mentoring_style {
+    align-items:flex-end;
+    justify-content: flex-end;
+}
+
+.navbar_mentoring {
+    display: flex;
+    flex-direction: row;
+    
+    justify-content: center;
+    box-shadow: 2px 2px 2px #888888;
+
+}
 .text_submition {
     color : #464749;
     border: none;
