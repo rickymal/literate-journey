@@ -1,0 +1,218 @@
+.container {
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    
+    display: flex;
+    flex-direction: row;
+}
+
+div.circle_team_icon > div{
+    width: 90px;
+    height: 90px;
+    background-color: #C4C4C4;
+    border-radius: 50px;
+    align-items: center;
+    justify-content: center;
+    display : flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    margin-bottom: 10px;
+}
+
+div.circle_team_icon > div > text {
+    font-size: 35px;
+}
+
+div.circle_team_icon {
+    align-items: center;
+    justify-content: center;
+    display : flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    margin: 10px;
+}
+
+
+div.team_options {
+    list-style-type: none;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin : 10px;
+    
+    display: block;
+    display : flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.sidebar {
+    background-color: #235E9D;
+    min-width: 100px;
+    padding-left: 5px;
+    padding-right: 5px;
+    max-width: 220px;
+}
+
+.sidebar text {
+    color: white;
+    font-weight: bold;
+    margin-bottom: 10px;
+    margin-top:10px;
+    display: block;
+    font-size: 15px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    
+}
+
+
+
+.sidebar div.options {
+    
+    display: block;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 100px;
+    
+}
+.main_dashboard {
+    display: flex;
+    flex-direction: column;
+    background-color: #EBF2F5;
+    width: 100%;
+    height: auto;
+    
+}
+
+.text_profile {
+    font-weight: bold;
+    font-size: 30px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+.txt_information {
+    font-size: 20px;
+    font-weight: bold;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+.tersw {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    flex : 3;
+    
+}
+
+.tersw_description {
+    flex : 1;
+    display: flex;
+    flex-direction: column;
+
+}
+.second_dashboard {
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    padding : 0px 60px;
+    height: 100%;
+    width: auto;
+    margin: 20px 60px;
+    justify-content: space-between;
+}
+
+.horizontal_line {
+    border-left: 6px solid black;
+    width: 500px;
+    position: absolute;
+    top : 0;
+}
+
+.mainly_function {
+    margin-right: 50px;
+}
+
+.descr_function {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.user1 {
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.short_description {
+     font-size: 15px;
+
+}
+
+.user_profile_navbar {
+    font-size: 30px;
+    color: #7A7A7A;
+}
+.hjyh {
+    
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 0px 50px;
+
+}
+.yyop {
+    display: flex;
+    flex-direction: row;
+    
+    justify-content:left;
+    padding: 0px 100px;
+    box-sizing: border-box;
+    align-items: center;
+    padding-bottom: 10px;
+    padding-top : 10px
+    
+}
+
+.description {
+    color: #464749;
+    font-weight: bold;
+    font-size: 25px;
+
+}
+
+.uiop {
+    
+    justify-content: space-between;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+}
+
+
+.wrgew {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    
+    padding : 0px 60px;
+}
+
+hr#horizontal_line {
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 1px solid #ccc;
+    margin: 1em 0;
+    padding: 0;
+    background-color: greenyellow;
+}
+
+.team_status {
+    color: red;
+    font-weight: bold;
+    font-size: 17px;
+}
+
+.create_team {
+    color : #7A7A7A;
+}
+
