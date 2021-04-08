@@ -1,0 +1,92 @@
+Autor : Henrique Mauler Borges
+plantuml
+
+
+
+		Buscar por mentorias
+@startuml
+actor       Estudante       as estudante
+boundary    "buscar mentoria"    as platform
+control     mentoringController     as controller
+entity      entity      as Foo4
+database    "tabela dos mentores"    as database
+collections collections as Foo6
+queue       queue       as Foo7
+
+estudante -> platform : buscar mentorias
+platform-> controller : controlar
+platform -> platform : auto mensagem
+controller -> database : buscar os dados
+database -> controller : fornecer a lista
+controller -> platform : renderizar em forma de tabela os mentores disponíveis
+
+
+
+@enduml
+
+
+
+
+
+			diagrama de casos de uso
+@startuml
+left to right direction
+actor Estudante as e
+actor Mentor as m
+actor Avaliador as a
+
+note "Modulo de controle de mentorias" as n1
+
+
+package Mecathon {
+usecase "Fazer login" as l1
+usecase "Se cadastrar" as l2
+
+
+package "Plataforma de estudantes do Mecathon" {
+  usecase "buscar um time" as r3
+  usecase "criar um time" as r4
+  usecase "enviar projeto" as r5
+  usecase "buscar por mentoria" as r6
+  usecase "cancelar mentorias" as r7
+
+}
+
+package "Plataforma dos mentores do Mecathon" {
+usecase "Cadastrar horários disponíveis na plataforma" as q1
+usecase "Avaliar disponibilidade" as q2
+}
+
+package "Plataforma dos avaliadores do Mecathon" {
+usecase "Avaliar o projeto" as w1
+}
+
+
+}
+
+
+e --> r3
+e --> r4
+e --> r5
+e --> r6
+e --> r7
+m --> q1
+a --> w1
+
+q1 .> q2 : <<include>>
+
+q1 .. n1
+r6 .. n1
+r7 .. n1
+q1 -- e
+
+newpage
+e --> l1
+e --> l2
+m --> l1
+m --> l2
+a --> l1
+a --> l2
+
+@enduml
+
