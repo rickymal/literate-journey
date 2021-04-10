@@ -2,7 +2,7 @@ import s from './mentoringList.module.css'
 import f from './userProfile.module.css'
 import Image from 'next/image'
 
-const Sidebar = () => (
+const Sidebar = ({data}) => (
     <div className = {f.sidebar}>
                 
                 <Image
@@ -21,6 +21,7 @@ const Sidebar = () => (
                     <text>Mentorias</text>
                     <text>Submissão de projetos</text>
                     <text>Ajuda</text>
+                    <text>{data}</text>
                 </div>
 
             </div>
@@ -50,9 +51,9 @@ const NavbarMentoring = () => (
 
 // não consegui finalizar
 const Options = () => (
-    <div className = {s.option_mentoring_style}>
-        
-    </div>
+    <>
+        <button className = {s.button_selector_mentor}>Selecionar mentoria</button>
+    </>
 )
 
 const MentoringList = () => (
@@ -100,10 +101,31 @@ const Dashboard = () => (
     </div>
 )
 
-export default function Main() {
+// apenas no lado do servidor, ou seja, nenhum console.log funcionará aqui
+export async function getServerSideProps(context){
+    const data = "Henrique Mauler Borges - getstaticprops";
+    const information = await fetch('https://api.github.com/repos/vercel/next.js');
+    //const internal_ = await fetch('/api/endpointer');
+
+    return {
+        props : {
+            data : data,
+            information : await information.json(),
+        }
+    }
+}
+
+
+export default function Main(props) {
+
+    const d = props.data;
+    const info = props.information;
+    console.log(info);
+    
+
     return (
         <div className = {s.container}>
-            <Sidebar/>
+            <Sidebar data = {d}/>
             <Dashboard/>
         </div>
     )

@@ -1,7 +1,52 @@
-import s from './userProfile.module.css'
+import s from './singleDashboardNavbar.module.css'
 import Image from 'next/image'
-import Container from '../components/singleDashboardNavbar'
-export default function Main(){
+import Link from 'next/link'
+
+const Container = ({children}) => (
+    <div className = {s.container}>
+            <div className = {s.sidebar}>
+                
+                <Image
+                src = "/images/mecathon-transparent-logo.svg"
+                width = {500}
+                height = {500}
+                alt = "Mecathon"
+                className = {s.logo_mecathon}
+                />
+                <text>Meu perfil</text>
+
+                <hr/>
+                <div className = {s.options}>
+                    <Link href = '/error'><text>Equipes</text></Link>
+                    <Link href = '/error'><text>Minha equipe</text></Link>
+                    <Link href = '/mentoringList'><text>Mentorias</text></Link>
+                    <Link href = '/error'><text>Submissão de projetos</text></Link>
+                    <Link href = '/error'><text>Ajuda</text></Link>
+                    <Link href = '/error'><text>Equipes</text></Link>
+                    
+                </div>
+
+            </div>
+            <div className = {s.main_dashboard}>
+                <div className = {s.hjyh}>
+                    <text className ={s.text_profile}>Meu Perfil</text>
+                    <text className ={s.user_profile_navbar}>Usuario</text>
+                </div>
+                    
+                <div className = {s.wrgew}>
+                    <text className = {s.team_status}>Atualmente você não está em nenhuma equipe</text>
+                    <text className = {s.create_team}>criar equipe</text>
+                </div>
+
+                <div className = {s.second_dashboard}>
+                    {children}
+                </div>
+            </div>
+        </div>
+)
+
+
+export default function Test(){
     return (
         <Container>
             <div className = {s.uiop}>

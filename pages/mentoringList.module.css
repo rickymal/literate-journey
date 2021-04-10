@@ -76,11 +76,21 @@ div.mentoring_list div text {
 div.mentoring_list div {
     justify-content: space-between;
     padding-top: 50px;
+    align-items: center;
 }
 
 div.option_mentoring_style {
     align-items:flex-end;
     justify-content: flex-end;
+    
+}
+
+button.button_selector_mentor {
+    background-color: #EBF2F5;
+    color : #7A7A7A;
+    font-weight: bold;
+    border: none;
+    padding: 10px;
 }
 
 .navbar_mentoring {
