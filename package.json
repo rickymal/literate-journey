@@ -5,7 +5,8 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "inspect": "NODE_OPTIONS='--inspect' next dev"
   },
   "dependencies": {
     "gray-matter": "^4.0.2",
