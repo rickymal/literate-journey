@@ -2,7 +2,7 @@ import s from './singleDashboardNavbar.module.css'
 import Image from 'next/image'
 import Link from 'next/link'
 
-const Container = ({children}) => (
+const Container = ({children, hasTeam}) => (
     <div className = {s.container}>
             <div className = {s.sidebar}>
                 
@@ -34,7 +34,11 @@ const Container = ({children}) => (
                 </div>
                     
                 <div className = {s.wrgew}>
-                    <text className = {s.team_status}>Atualmente você não está em nenhuma equipe</text>
+                    {
+                        hasTeam ? <text className = {s.team_status} style = {{color : "blue"}}>Com time</text> :
+                        <text className = {s.team_status}>No momento vocês está sem time</text>
+                    }
+                    
                     <text className = {s.create_team}>criar equipe</text>
                 </div>
 
@@ -45,13 +49,15 @@ const Container = ({children}) => (
         </div>
 )
 
+export default Container;
 
-export default function Test(){
+
+function Test(){
     return (
         <Container>
             <div className = {s.uiop}>
                         <text className = {s.user1}>Usuario 1</text>
-                        <text className = {s.short_description}>Short user description</text>
+                        <text className = {s.short_description}>Uma descrição breve</text>
                     </div>
                     <hr/>
                     <div className = {s.tersw}>

@@ -1,71 +1,80 @@
-import Head from 'next/head'
-import Layout, { siteTitle } from '../components/layout'
-import utilStyles from '../styles/utils.module.css'
-import {useRouter} from 'next/router'
-
-import { getSortedPostsData } from '../lib/posts'
+import s from './login.module.css'
 import Link from 'next/link'
+import { useState } from 'react'
+import { useRouter } from 'next/router'
 
-export async function getServerSideProps() {
-  const allPostsData = getSortedPostsData()
-  return {
-    props: {
-      allPostsData
+
+const CircleOptions = () => (
+    <div className = {s.container_circle_options}>
+        <div>
+            <input type = 'radio' className = {s.circle_div} name = "gender"/>
+            <input type = 'radio' className = {s.circle_div} name = "gender" checked/>
+            <input type = 'radio' className = {s.circle_div} name = "gender"/>
+        </div>
+    </div>
+)
+
+const LoginField = ({state_hook}) => (
+    <div>
+        <div className = {s.textbox_field}>
+            <div className = {s.squared_div}/>
+            <input type = "textbox" className = {s.input_field} placeholder = "login" onChange = {(e) => state_hook.login(e.target.value)}/>
+        </div>
+        <div className = {s.textbox_field}>
+            <div className = {s.squared_div}/>
+            <input type = "textbox" className = {s.input_field} placeholder = "senha" onChange = {e => state_hook.password(e.target.value)}/>
+        </div>
+    </div>
+)
+
+const Login = () => {
+    const [login,set_login] = useState("");
+    const [password,set_password] = useState("");
+    const router = useRouter()
+
+    async function handleLogin(login,password,e) {
+        e.preventDefault();
+
+        const url = 'http://127.0.0.1:8000/login?' + new URLSearchParams({
+            username : login,
+            password : password,
+        });
+
+
+        //alert(url);
+        const result = await fetch(url);
+        var resultado = await result.json();
+        
+        //localStorage.setItem("mecathon_global_variables",resultado)
+        localStorage.setItem("mecathon_global_variables",JSON.stringify(resultado))
+        
+        router.push("/userProfile");
+
+
+
     }
-  }
+    
+    return (
+        <div className = {s.login_field}>
+            <text className = {s.text_entrecom}>Entre com</text>
+            <CircleOptions/>
+            <text className = {s.text_entrecom}>ou</text>
+            <LoginField state_hook = {{login : set_login, password : set_password}}/>
+            
+            <button className = {s.button_style} onClick = {(e) => handleLogin(login,password,e)}>ENTRAR</button>
+            
+            <text className = {s.smaller_text}>ou</text>
+            <Link href = '/home'><text className = {s.register_link}>registre-se</text></Link>
+        </div>
+    )
 }
-/*
-export async function getStaticProps() {
-  const allPostsData = getSortedPostsData()
-  return {
-    props: {
-      allPostsData
-    }
-  }
-}
-export async function getServerSideProps(context){
-  return {
-    props : {
-      //props para o componente
-    }
-  }
-}
-*/
-export default function index({allPostsData}) {
-  const router = useRouter()
-  function handleRoute(){
-    router.push("/home")
-  }
-
-  return (
-    <Layout home>
-      <Head>
-        <title>{siteTitle}</title>
-      </Head>
-      <section className={utilStyles.headingMd}>
-        <p>[Your Self Introduction]</p>
-        <p>
-          (This is a sample website - you’ll be building a site like this on{' '}
-          <a href="https://nextjs.org/learn">our Next.js tutorial</a>.)
-        </p>
-      </section>
-
-      <section className={`${utilStyles.headingMd} ${utilStyles.padding1px}`}>
-        <h2 className={utilStyles.headingLg}>Blog</h2>
-        <ul className={utilStyles.list}>
-          {allPostsData.map(({ id, date, title }) => (
-            <li className={utilStyles.listItem} key={id}>
-              {title}
-              <br />
-              {id}
-              <br />
-              {date}
-            </li>
-          ))}
-        </ul>
-      </section>
-
-      <Link href = "/home">Home</Link>
-    </Layout>
-  )
+export default function Main() {
+    return (
+        <div className = {s.container}>
+            <div className = {s.sub_container}>
+                <text className = {s.text_logar}>Logar</text>
+                <Login/>
+            </div>
+        </div>
+    )
 }
