@@ -42,12 +42,16 @@ const Login = () => {
 
 
         //alert(url);
-        const result = await fetch(url);
+        alert("Enviando esse troço com credencial");
+        const result = await fetch(url,{credentials : 'include'});
         var resultado = await result.json();
         
         //localStorage.setItem("mecathon_global_variables",resultado)
         localStorage.setItem("mecathon_global_variables",JSON.stringify(resultado))
+        alert(typeof document.cookie)
+        alert(document.cookie)
         
+
         router.push("/userProfile");
 
 
