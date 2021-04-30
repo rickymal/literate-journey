@@ -51,15 +51,22 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-
     "corsheaders.middleware.CorsMiddleware",
     "corsheaders.middleware.CorsPostCsrfMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
 ]
 
+
+MIDDLEWARE_CLASSES = [
+    'corsheaders.middleware.CorsMiddleware',  
+    'django.middleware.common.CommonMiddleware',
+]
+
+
 CORS_ORIGIN_ALLOW_ALL = True
 CORS_ALLOW_CREDENTIALS =  True
 CORS_ALLOW_ALL_ORIGINS = True
+
 from corsheaders.defaults import default_headers
 
 _HEADERS = [
@@ -91,14 +98,22 @@ CORS_PREFLIGHT_MAX_AGE = 3600
 from corsheaders.defaults import default_methods
 
 CORS_ALLOW_METHODS = list(default_methods)
-# Access-Control-Allow-Credentials = True
 CORS_ALLOW_ALL_ORIGINS =  True
-# ACCESS-CONTROL-ALLOW-CREDENTIALS = True
-# CSRF_COOKIE_SAMESITE = None 
-# SESSION_COOKIE_SAMESITE = None
+ACCESS_CONTROL_ALLOW_CREDENTIALS = True
 
+CSRF_COOKE_SECURE = True
+SESSION_COOKIE_SECURE = True
+CSRF_COOKIE_SAMESITE = "None"
+SESSION_COOKIE_SAMESITE = "None"
+
+SESSION_COOKIE_DOMAIN = None
+SESSION_COOKIE_SECURE = True
+SESSION_COOKIE_SECURE = True
+
+#CSRF_COOKIE_SAMESITE = None 
+#SESSION_COOKIE_SAMESITE = None
 # SESSION_COOKIE_DOMAIN = '127.0.0.1'
-# SESSION_COOKIE_DOMAIN = None
+#SESSION_COOKIE_DOMAIN = None
 ROOT_URLCONF = 'mecathon.urls'
 
 

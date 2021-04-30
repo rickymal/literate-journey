@@ -82,7 +82,7 @@ def register__old__Team(request):
     #authentication.registerTeam(team_name = data["team_name"])
 state = defaultdict(None)
 
-
+@csrf_exempt
 def get_selections_mentor(request):
     user = request.user
     student = Student.objects.filter(user_id=user)
@@ -310,7 +310,7 @@ def show_disposable_mentors(request):
     
     return JsonResponse(values, safe=False,)
 
-
+@csrf_exempt
 def insert_data_meeting(request):
     """
     Função que fará a inserção dos horário de mentoria
@@ -414,7 +414,7 @@ def create_team(request):
         "status": "OK"
     })
 
-
+@csrf_exempt
 def create_challenge(request):
     # No momento a criação dos desafios seá feita diretamente na página do administrador
 
@@ -433,7 +433,7 @@ def create_challenge(request):
         })
 
 
-@csrf_exempt
+
 def loginUser(request):
     username = request.GET.get('username')
     password = request.GET.get('password')

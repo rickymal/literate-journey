@@ -2,6 +2,8 @@ import s from './login.module.css'
 import Link from 'next/link'
 import { useState } from 'react'
 import { useRouter } from 'next/router'
+// import axios from '../lib/_axios'
+import axios from 'axios'
 
 
 const CircleOptions = () => (
@@ -32,19 +34,39 @@ const Login = () => {
     const [password,set_password] = useState("");
     const router = useRouter()
 
+    const api = axios.create({
+        baseURL : 'http://localhost:8000',
+    });
+
+    api.defaults.headers.post["Access-Control-Allow-Origin"] = "*";
+    api.defaults.headers.post["Access-Control-Allow-Headers"] = "*";
+    api.defaults.headers.post["Access-Control-Allow-Method"] = "*";
+    api.defaults.headers.post["Content-Type"] = "application/json;charset=utf-8";
+    api.defaults.withCredentials = true;
+
     async function handleLogin(login,password,e) {
         e.preventDefault();
 
-        const url = 'http://127.0.0.1:8000/login?' + new URLSearchParams({
+        const url = '/auth/authenticate';
+        
+        
+        //alert(url);
+        
+        // const result = await fetch(url,{credentials : 'include', withCredentials : true});
+        const result = await api.post(url,{
             username : login,
-            password : password,
+            password : password
         });
 
+        
 
-        //alert(url);
-        alert("Enviando esse troço com credencial");
-        const result = await fetch(url,{credentials : 'include'});
-        var resultado = await result.json();
+        alert("resultado")
+        alert(result)
+        alert(result.data)
+        console.log(result)
+        console.log(result.data)
+        // var resultado = await result.json();
+        var resultado = result.data
         
         //localStorage.setItem("mecathon_global_variables",resultado)
         localStorage.setItem("mecathon_global_variables",JSON.stringify(resultado))

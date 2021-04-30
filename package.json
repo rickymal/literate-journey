@@ -9,6 +9,7 @@
     "inspect": "NODE_OPTIONS='--inspect' next dev"
   },
   "dependencies": {
+    "axios": "^0.21.1",
     "gray-matter": "^4.0.2",
     "next": "^10.0.0",
     "react": "17.0.1",
