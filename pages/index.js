@@ -50,19 +50,19 @@ const Login = () => {
         const url = '/auth/authenticate';
         
         
-        //alert(url);
+        
         
         // const result = await fetch(url,{credentials : 'include', withCredentials : true});
         const result = await api.post(url,{
-            username : login,
+            email : login,
             password : password
         });
 
         
 
-        alert("resultado")
-        alert(result)
-        alert(result.data)
+        
+        
+        
         console.log(result)
         console.log(result.data)
         // var resultado = await result.json();
@@ -70,8 +70,8 @@ const Login = () => {
         
         //localStorage.setItem("mecathon_global_variables",resultado)
         localStorage.setItem("mecathon_global_variables",JSON.stringify(resultado))
-        alert(typeof document.cookie)
-        alert(document.cookie)
+        
+        
         
 
         router.push("/userProfile");

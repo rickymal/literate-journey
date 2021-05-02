@@ -3,25 +3,6 @@ import Image from 'next/image'
 import Container from '../components/singleDashboardNavbar'
 import { useEffect, useState } from 'react';
 
-/*
-export async function getServerSideProps() {
-    
-    
-    return {
-        props : {
-            User : {
-                status : data_converted.status,
-                name : data_converted.name,
-                function_user : data_converted.function,
-                description : data_converted.description,
-                team : data_converted === null ? null : data_converted.team.id,
-            }
-        }
-    }
-    
-}
-*/
-
 export default function Main({User}){
     const [status,set_status] = useState("")
     const [name,set_name] = useState("")
@@ -30,18 +11,20 @@ export default function Main({User}){
     const [team,set_team] = useState("")
     const [hasTeam, set_hasTeam] = useState(false);
 
+    alert("teste");
+
     useEffect(function() {
         var data = localStorage.getItem("mecathon_global_variables");
         var data_converted = JSON.parse(data);
-        set_status(data_converted.status);
-        set_name(data_converted.name);
-        set_function_user(data_converted.function);
-        set_description(data_converted.description);
-        set_team(data_converted.team);
+        set_status(data_converted.user.status);
+        set_name(data_converted.user.name);
+        set_function_user(data_converted.user.function_user);
+        set_description(data_converted.user.description);
+        set_team(data_converted.user.team);
         console.log(data_converted);
-        console.log(data_converted.team)
-        console.log(typeof data_converted.team)
-        console.log(data_converted.team === null);
+        console.log(data_converted.user.team)
+        console.log(typeof data_converted.user.team)
+        console.log(data_converted.user.team === null);
 
 
         set_hasTeam(data_converted.team === null ? false : true)
@@ -70,7 +53,7 @@ export default function Main({User}){
                 </div>
                 <div className ={s.yyop}>
                     <text className = {s.mainly_function}>Equipe atual</text>
-                    <text className = {s.descr_function}>{hasTeam ? "Equipe " + team.id : "Sem equipe"}</text>
+                    <text className = {s.descr_function}>{hasTeam ? "Equipe " + team : "Sem equipe"}</text>
                 </div>
                 <div className ={s.yyop}>
                     <text className = {s.mainly_function}>Desafio</text>

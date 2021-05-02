@@ -14,6 +14,12 @@
     "fs": "^0.0.1-security",
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.12.5",
-    "path": "^0.12.7"
+    "path": "^0.12.7",
+    "sequelize": "^6.6.2",
+    "sqlite3": "^5.0.2"
+  },
+  "scripts": {
+    "nodev": "nodemon --watch src src/index.js",
+    "dev" : "nodemon --inspect src/index.js"
   }
 }

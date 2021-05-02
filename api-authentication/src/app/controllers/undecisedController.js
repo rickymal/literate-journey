@@ -9,4 +9,8 @@ router.get('/',function(req,res){
     res.send({ ok : true, user : req.userId})
 })
 
-module.exports = app => app.use('/projects',router);
+
+
+
+
+module.exports = app => app.use('/etc',router);
