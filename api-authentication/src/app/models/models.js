@@ -84,16 +84,8 @@ Mentor.belongsTo(Challenge);
     password : 'fi1247369',
   });
 
-  const mentor_user = await User.create({
-    username : "mentor@gmail.com",
-    password : "fi147369",
 
-  });
-
-
-  const mentor_model = await Mentor.create({
-    userId : mentor_user.id,
-  });
+  
 
   const student_rique = await Student.create({
     userId : rique.id,
@@ -131,7 +123,18 @@ Mentor.belongsTo(Challenge);
     description : "não tivemos nenhuma ideia de descrição, nos desculpem, se virem!",
   })
 
+  // criando o mentor 
+  const mentor_user = await User.create({
+    username : "mentor@gmail.com",
+    password : "fi147369",
 
+  });
+
+  const mentor_model = await Mentor.create({
+    userId : mentor_user.id,
+  });
+
+  mentor_model.setChallenge(gorilaz)
   
 
   console.log("Created succesfull");

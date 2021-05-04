@@ -86,8 +86,13 @@ router.post('/authenticate', async (req,res) => {
     */
 
     user.password = undefined;
+    var student = await user.getStudent(); // o comando retornar uma promise
+
+    console.log("mostrando o estudante")
+    console.log(student)
+
     const token = generateToken({ id : user.id })
-    res.send({user, token});
+    res.send({user, token, student});
 })
 
 module.exports = app => app.use('/auth', router);
