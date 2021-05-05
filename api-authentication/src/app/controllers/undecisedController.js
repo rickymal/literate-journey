@@ -82,28 +82,32 @@ router.get('/mentors',async function(req,res){
         // por hora eu vou fazer uma gambiarra aqui
 
     // criando mentorias disponíveis para serem chamadas
-    try {
-        await Models.Mentoring.create({
-            data_for_meeting : new Date(
-                year = 2021,
-                month = 5,
-                day = 4,
-                hour = 15,
-                minute = 30,
-            ),
-            link_for_meeting : "",
-            mentorId : mentors[0].id,
-            teamId : null,
-        })
+    
+    var mentoring_model = await Models.Mentoring.create({
+        data_for_meeting : Date.now(),
+        link_for_meeting : "",
+    })
+    mentors[0].addMentoring(mentoring_model)
 
-    } catch (err) {
-        return res.status(400).json({
-            err,
-        })
-    }
+
+    
+    console.log("Fazendo a adição de um time para o mentor");
+
+    // obter a lista de mentorias disponíveis baseada no time do usuário
+    // var lof_mentorings = await Models.Mentoring.findAll({where : {}})
+
+    /*
+    Obter a lista de mentorias disponíveis cujo mentor de tal mentoria seja do mesmo desafio que o usuário
+    
+    */
+
+    
+
+
 
     return res.status(200).json({
-        mentors
+        mentors,
+        
     })
     
 })

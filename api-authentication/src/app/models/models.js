@@ -49,11 +49,14 @@ Student.belongsTo(User)
 Challenge.hasMany(Team)
 Team.belongsTo(Challenge)
 
+
 Mentoring.init({
   data_for_meeting : dt.DATE,
   link_for_meeting : dt.CHAR(length = 100),
 },{sequelize, modelName : "mentoring"})
 
+/*
+// isso aqui tá errado!
 Mentor.belongsToMany(Team,{
   through : Mentoring,
 })
@@ -61,6 +64,19 @@ Mentor.belongsToMany(Team,{
 Team.belongsToMany(Mentor,{
   through : Mentoring,
 })
+*/
+
+
+// um mentor possui muitas mentorias
+// uma mentoria é pertencida a apenas um mentor
+Mentor.hasMany(Mentoring);
+Mentoring.belongsTo(Mentor);
+
+// Uma time possui várias mentorias
+// uma mentoria pertence a um único time
+Team.hasMany(Mentoring);
+Mentoring.belongsTo(Team);
+
 
 
 Team.hasMany(Student)
