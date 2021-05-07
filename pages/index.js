@@ -59,19 +59,12 @@ const Login = () => {
         });
 
         
+        localStorage.setItem("token",result.data.token);
+        
 
+        localStorage.setItem("mecathon_global_variables",JSON.stringify(result.data))
         
-        
-        
-        console.log(result)
-        console.log(result.data)
-        // var resultado = await result.json();
-        var resultado = result.data
-        
-        //localStorage.setItem("mecathon_global_variables",resultado)
-        localStorage.setItem("mecathon_global_variables",JSON.stringify(resultado))
-        
-        
+        alert('deu tudo certo')
         
 
         router.push("/userProfile");

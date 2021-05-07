@@ -9,6 +9,7 @@ class User extends Model {}
 User.init({
   username: DataTypes.STRING,
   password : dt.STRING,
+  name : dt.STRING,
 }, { sequelize, modelName: 'user' });
 
 
@@ -94,10 +95,12 @@ Mentor.belongsTo(Challenge);
   const rique = await User.create({
     username: 'henriquemauler@gmail.com',
     password : 'he147369',
+    name : "Henrique Mauler Borges",
   });
   const arique = await User.create({
     username : "henriquemauler@outlook.com",
     password : 'fi1247369',
+    name : "aHenrique Mauler Borges",
   });
 
 
@@ -152,6 +155,24 @@ Mentor.belongsTo(Challenge);
 
   mentor_model.setChallenge(gorilaz)
   
+
+  var team = await Team.create({
+    noteJudger : 0,
+    link_to_project : "",
+    ChallengeId : gorilaz.id,
+  })
+
+  student_rique.setTeam(team)
+
+
+  var mentoring_model = await Mentoring.create({
+      data_for_meeting : Date.now(),
+      link_for_meeting : "",
+  })
+  mentor_model.addMentoring(mentoring_model)
+
+
+
 
   console.log("Created succesfull");
 })();

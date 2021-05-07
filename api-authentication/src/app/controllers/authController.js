@@ -43,6 +43,7 @@ router.post('/register',async (req,res) => {
         const user = await Models.User.create({
             username : req.body.email,
             password : req.body.password,
+            name : req.body.username
         });
 
 

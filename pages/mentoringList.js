@@ -57,18 +57,22 @@ const Options = () => (
 
 async function getMentors(url) {
   //alert(url);
+  var token = localStorage.getItem("token");
+  
+
   const options = {
       method: "GET",
-      headers: new Headers({'Access-Control-Allow-Origin': '*'}),
+      headers: new Headers({'Access-Control-Allow-Origin': '*',
+      "authorization" : "Bearer " + token,
+    }),
       mode: 'no-cors'
     };
     
     const result = await fetch(url,options);
-    console.log(resultado)
-    console.log(typeof resultado);
-    var resultado = await result.json();
-  //options.body = JSON.stringify(body);
-  return resultado;
+    alert(typeof result)
+    alert(JSON.stringify(result))
+
+  return result;
 }
 
 
@@ -76,7 +80,7 @@ async function getMentors(url) {
 const MentoringList = () => {
   const [mentors, set_mentors] = useState([]);
   useEffect(() => {
-    const url = "http://127.0.0.1:8000/show_disposable_mentors"
+    const url = "http://127.0.0.1:8000/etc/mentors"
     const resultado = getMentors(url);
     resultado.then((e) => {
       alert("OK");
@@ -148,13 +152,11 @@ export async function getServerSideProps(context) {
 }
 
 export default function Main(props) {
-  const d = props.data;
-  const info = props.information;
-  console.log(info);
+  
 
   return (
     <div className={s.container}>
-      <Sidebar data={d} />
+      <Sidebar />
       <Dashboard />
     </div>
   );

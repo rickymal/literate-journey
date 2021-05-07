@@ -4,7 +4,7 @@ const express = require('express');
 const router = express.Router();
 const authMiddleware = require('../middlewares/auth');
 const Models = require('../models/models')
-const { DataTypes }  = require('sequelize')
+const { DataTypes, Op, where }  = require('sequelize')
 
 router.use(authMiddleware);
 
@@ -82,13 +82,6 @@ router.get('/mentors',async function(req,res){
         // por hora eu vou fazer uma gambiarra aqui
 
     // criando mentorias disponíveis para serem chamadas
-    
-    var mentoring_model = await Models.Mentoring.create({
-        data_for_meeting : Date.now(),
-        link_for_meeting : "",
-    })
-    mentors[0].addMentoring(mentoring_model)
-
 
     
     console.log("Fazendo a adição de um time para o mentor");
@@ -98,16 +91,32 @@ router.get('/mentors',async function(req,res){
 
     /*
     Obter a lista de mentorias disponíveis cujo mentor de tal mentoria seja do mesmo desafio que o usuário
-    
+    para mais informações ler a sessão de Edger loading do sequelize
     */
 
+    var all_mentorings = await Models.Mentoring.findAll({
+        where : {},
+        include : [
+            {
+                model : Models.Mentor,
+                where : {
+                    ChallengeId : challenge.id,
+                },
+                required : true,
+            }
+            
+        ]
+    })
+
+    console.log(all_mentorings)
     
 
+  
 
 
     return res.status(200).json({
         mentors,
-        
+        all_mentorings,
     })
     
 })

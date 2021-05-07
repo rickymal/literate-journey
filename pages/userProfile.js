@@ -16,19 +16,18 @@ export default function Main({User}){
     useEffect(function() {
         var data = localStorage.getItem("mecathon_global_variables");
         var data_converted = JSON.parse(data);
-        set_status(data_converted.user.status);
-        set_name(data_converted.user.name);
-        set_function_user(data_converted.user.function_user);
-        set_description(data_converted.user.description);
-        set_team(data_converted.user.team);
-        console.log(data_converted);
-        console.log(data_converted.user.team)
-        console.log(typeof data_converted.user.team)
-        console.log(data_converted.user.team === null);
 
+        var username = data_converted.user.name
+        var description = data_converted.student.description
+        var function_user = data_converted.student.function_user
+        var teamId =  data_converted.student.teamId
 
-        set_hasTeam(data_converted.team === null ? false : true)
-        console.log(hasTeam);
+        set_status(teamId)
+        set_name(username);
+        set_function_user(function_user);
+        set_description(description);
+        set_team(teamId);
+        set_hasTeam(data_converted.teamId === null ? false : true)
 
         
     },[])
@@ -49,11 +48,11 @@ export default function Main({User}){
                 </div>
                 <div className ={s.yyop}>
                     <text className = {s.mainly_function}>Status</text>
-                    <text className = {s.descr_function}>{status}</text>
+                    <text className = {s.descr_function}>Participante</text>
                 </div>
                 <div className ={s.yyop}>
                     <text className = {s.mainly_function}>Equipe atual</text>
-                    <text className = {s.descr_function}>{hasTeam ? "Equipe " + team : "Sem equipe"}</text>
+                    <text className = {s.descr_function}>{team ? "Equipe " + team : "Sem equipe"}</text>
                 </div>
                 <div className ={s.yyop}>
                     <text className = {s.mainly_function}>Desafio</text>
