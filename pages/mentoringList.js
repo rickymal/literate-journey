@@ -55,39 +55,11 @@ const Options = () => (
   </>
 );
 
-async function getMentors(url) {
-  //alert(url);
-  var token = localStorage.getItem("token");
-  
-
-  const options = {
-      method: "GET",
-      headers: new Headers({'Access-Control-Allow-Origin': '*',
-      "authorization" : "Bearer " + token,
-    }),
-      mode: 'no-cors'
-    };
-    
-    const result = await fetch(url,options);
-    alert(typeof result)
-    alert(JSON.stringify(result))
-
-  return result;
-}
-
-
 
 const MentoringList = () => {
   const [mentors, set_mentors] = useState([]);
   useEffect(() => {
-    const url = "http://127.0.0.1:8000/etc/mentors"
-    const resultado = getMentors(url);
-    resultado.then((e) => {
-      alert("OK");
-      alert(JSON.stringify(e));
-      console.log(e);
-
-    });
+    
   }, []);
   return (
     <div className={s.mentoring_list}>
@@ -125,7 +97,7 @@ const MentoringList = () => {
   );
 };
 
-const Dashboard = () => (
+const Dashboard = (props) => (
   <div className={s.dashboard_mainly}>
     <text className={s.submition_project}>Lista de mentorias</text>
     <div className={s.third_dashboard_edited}>
@@ -137,6 +109,30 @@ const Dashboard = () => (
 
 // apenas no lado do servidor, ou seja, nenhum console.log funcionará aqui
 export async function getServerSideProps(context) {
+
+  var token = localStorage.getItem("token");
+  
+
+  const options = {
+      method: "GET",
+      headers: new Headers({'Access-Control-Allow-Origin': '*',
+      "authorization" : "Bearer " + token,
+    }),
+      mode: 'cors',
+      
+      
+    };
+    
+    const result = await fetch(url,options);
+    alert(typeof result)
+    alert(JSON.stringify(result))
+
+
+  //capturando a informação
+  const url = "http://127.0.0.1:8000/etc/mentors"
+  const resultado = await result.json();
+
+
   const data = "Henrique Mauler Borges - getstaticprops";
   const information = await fetch(
     "https://api.github.com/repos/vercel/next.js"
@@ -146,6 +142,7 @@ export async function getServerSideProps(context) {
   return {
     props: {
       data: data,
+      resultado : resultado,
       information: await information.json(),
     },
   };
@@ -157,7 +154,7 @@ export default function Main(props) {
   return (
     <div className={s.container}>
       <Sidebar />
-      <Dashboard />
+      <Dashboard props = {props} />
     </div>
   );
 }
