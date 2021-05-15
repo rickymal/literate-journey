@@ -64,7 +64,7 @@ const Login = () => {
 
         localStorage.setItem("mecathon_global_variables",JSON.stringify(result.data))
         
-        alert('deu tudo certo')
+        // alert('deu tudo certo')
         
 
         router.push("/userProfile");

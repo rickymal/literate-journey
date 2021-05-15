@@ -3,13 +3,15 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "cross-env NODE_OPTIONS='--inspect=127.0.0.1:4726' next dev",
+    "adev": "next dev",
     "build": "next build",
     "start": "next start",
     "inspect": "NODE_OPTIONS='--inspect' next dev"
   },
   "dependencies": {
     "axios": "^0.21.1",
+    "cross-env": "^7.0.3",
     "gray-matter": "^4.0.2",
     "next": "^10.0.0",
     "react": "17.0.1",

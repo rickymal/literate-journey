@@ -2,7 +2,7 @@ import s from "./mentoringList.module.css";
 import f from "./userProfile.module.css";
 import Image from "next/image";
 import { useEffect, useState } from "react";
-
+import axios from 'axios'
 const Sidebar = ({ data }) => (
   <div className={f.sidebar}>
     <Image
@@ -48,6 +48,11 @@ const NavbarMentoring = () => (
   </div>
 );
 
+
+function select_mentor(id) {
+  throw new Error("not implemented error");
+}
+
 // não consegui finalizar
 const Options = () => (
   <>
@@ -56,13 +61,44 @@ const Options = () => (
 );
 
 
-const MentoringList = () => {
+const MentoringList = (props) => {
   const [mentors, set_mentors] = useState([]);
   useEffect(() => {
-    
+    alert("mostrando o que tem nos mentorings")
+    alert(JSON.stringifyg(props.disposable_mentors));
   }, []);
   return (
     <div className={s.mentoring_list}>
+      {
+        props.disposable_mentors.all_mentorings.map(function(mentor) {
+          var date = new Date(mentor.data_for_meeting)
+          
+          var date_formatter = new Intl.DateTimeFormat('pt-br',{
+            dateStyle : 'short',
+          }).format(date)
+          var time_formatter = new Intl.DateTimeFormat('pt-br',{
+            timeStyle : 'short',
+          }).format(date)
+          
+
+          return (
+            <div>
+              <text>Mentoria</text>
+              <text>{date_formatter}</text>
+              <text>{time_formatter}</text>
+              <Options />
+            </div>
+          )
+
+
+
+
+
+
+
+
+        })
+      }
       <div>
         <text>Time 1</text>
         <text>07/09/2020</text>
@@ -102,11 +138,11 @@ const Dashboard = (props) => (
     <text className={s.submition_project}>Lista de mentorias</text>
     <div className={s.third_dashboard_edited}>
       <NavbarMentoring />
-      <MentoringList />
+      <MentoringList disposable_mentors = {props.disposable_mentors} />
     </div>
   </div>
 );
-
+/*
 // apenas no lado do servidor, ou seja, nenhum console.log funcionará aqui
 export async function getServerSideProps(context) {
 
@@ -147,14 +183,54 @@ export async function getServerSideProps(context) {
     },
   };
 }
+*/
+
+async function getMentors() {
+
+}
 
 export default function Main(props) {
-  
+  const api = axios.create({
+      baseURL : 'http://localhost:8000',
+  });
+
+  api.defaults.headers.post["Access-Control-Allow-Origin"] = "*";
+  api.defaults.headers.post["Access-Control-Allow-Headers"] = "*";
+  api.defaults.headers.post["Access-Control-Allow-Method"] = "*";
+  api.defaults.headers.post["Content-Type"] = "application/json;charset=utf-8";
+  api.defaults.withCredentials = true;
+  const [disposable_mentors,set_mentor_object] = useState({})
+
+
+  useEffect(() => {
+    var token = localStorage.getItem("token");
+    alert("token: " + token);
+   
+
+    const url = "etc/mentors";
+    try {
+      // não boto fé que esse tempo todo era o nome do objeto que estava errado...
+      var resultado = api.get(url,{
+        headers : {
+          authorization : "Bearer " + token,
+        }
+      })
+
+      resultado.then(function(e) {
+        
+        set_mentor_object(e.data);
+      })
+    } catch(error) {
+      alert("algo de errado não está certo");
+    }
+
+
+  },[]);
 
   return (
     <div className={s.container}>
       <Sidebar />
-      <Dashboard props = {props} />
+      {disposable_mentors ? <Dashboard disposable_mentors = {disposable_mentors} /> : null}
     </div>
   );
 }
