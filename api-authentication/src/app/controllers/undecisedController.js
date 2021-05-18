@@ -4,7 +4,6 @@ const express = require('express');
 const router = express.Router();
 const authMiddleware = require('../middlewares/auth');
 const Models = require('../models/models')
-const { DataTypes, Op, where }  = require('sequelize')
 
 router.use(authMiddleware);
 
@@ -118,6 +117,44 @@ router.get('/mentors',async function(req,res){
         mentors,
         all_mentorings,
     })
+    
+})
+
+
+router.post('/select_mentor',async function(req,res) {
+    const mentor_id = req.query.id
+    try {
+        console.log("id do mentor : " + mentor_id);
+        var mentor = await Models.Mentor.findOne({where : {id : mentor_id}})
+        
+        console.log("mentor : " + mentor);
+        // var lof_mentorings = await mentor.getMentorings();
+    
+    
+        console.log("mentor " + mentor);
+        // console.log("list of mentors: " + lof_mentorings)
+        // console.log("typeof lof" + lof_mentorings)
+    
+        var user = await Models.User.findOne({where : {id: req.userId}})
+        var student = await user.getStudent();
+        var team  = await student.getTeam();
+    
+        console.log(JSON.stringify(team));
+       
+        await Models.Mentoring.update({teamId : team.id},{
+            where : {
+                mentorId : mentor_id
+            }
+        })
+
+        return res.status(200).send("Mentoria selecionada com sucesso");
+
+    } catch (e) {
+        console.log("algo de errado n está certo ")
+    }
+
+    
+
     
 })
 

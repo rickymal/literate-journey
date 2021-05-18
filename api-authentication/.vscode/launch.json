@@ -8,7 +8,7 @@
             "type": "pwa-chrome",
             "request": "launch",
             "name": "Launch Chrome against localhost",
-            "url": "http://localhost:8080",
+            "url": "http://localhost:8000",
             "webRoot": "${workspaceFolder}"
         },
         {
@@ -19,11 +19,23 @@
 
             "name": "Attach by Process ID",
 
+            "stopOnEntry": false,
+
+            "port" : 9229,
+
+            "localRoot": "${workspaceRoot}/src",
+
+            "remoteRoot": "/",
+
             "processId": "${command:PickProcess}",
 
             "protocol": "inspector",
 
-            "restart": true
+            "restart": true,
+
+            "trace": true,
+
+            "usePreview"
 
         },
     ]

@@ -29,6 +29,8 @@ const LoginField = ({state_hook}) => (
     </div>
 )
 
+// alert
+
 const Login = () => {
     const [login,set_login] = useState("");
     const [password,set_password] = useState("");
@@ -64,7 +66,7 @@ const Login = () => {
 
         localStorage.setItem("mecathon_global_variables",JSON.stringify(result.data))
         
-        // alert('deu tudo certo')
+        // // alert('deu tudo certo')
         
 
         router.push("/userProfile");

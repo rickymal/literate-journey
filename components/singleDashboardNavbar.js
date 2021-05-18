@@ -13,10 +13,11 @@ const Container = ({children, hasTeam}) => (
                 alt = "Mecathon"
                 className = {s.logo_mecathon}
                 />
-                <text>Meu perfil</text>
+                <Link href = '/userProfile'><text>Meu perfil</text></Link>
 
                 <hr/>
                 <div className = {s.options}>
+                    <Link href = '/userProfile'><text>Área principal</text></Link>
                     <Link href = '/error'><text>Equipes</text></Link>
                     <Link href = '/error'><text>Minha equipe</text></Link>
                     <Link href = '/mentoringList'><text>Mentorias</text></Link>

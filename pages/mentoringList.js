@@ -3,6 +3,14 @@ import f from "./userProfile.module.css";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import axios from 'axios'
+import api_axios from '../lib/_axios'
+
+import Container from '../components/singleDashboardNavbar'
+import Link from "next/link";
+
+
+
+
 const Sidebar = ({ data }) => (
   <div className={f.sidebar}>
     <Image
@@ -16,7 +24,7 @@ const Sidebar = ({ data }) => (
 
     <hr />
     <div className={f.options}>
-      <text>Equipes</text>
+      <Link href = '/userProfile'><text>Tela principal</text></Link>
       <text>Minha equipe</text>
       <text>Mentorias</text>
       <text>Submissão de projetos</text>
@@ -49,36 +57,51 @@ const NavbarMentoring = () => (
 );
 
 
-function select_mentor(id) {
-  throw new Error("not implemented error");
+
+
+async function select_mentor(id) {
+  alert("the implementation has been comming... the id is: " + id);
+  var token = localStorage.getItem("token");
+  const response = await api_axios.post('etc/select_mentor?id=' + id,null, {
+    headers : {
+      authorization : "Bearer " + token,
+    },
+  });
+
+
+  alert(response.data)
+
+
+  
 }
 
-// não consegui finalizar
-const Options = () => (
-  <>
-    <button className={s.button_selector_mentor}>Selecionar mentoria</button>
-  </>
-);
 
 
 const MentoringList = (props) => {
   const [mentors, set_mentors] = useState([]);
   useEffect(() => {
-    alert("mostrando o que tem nos mentorings")
-    alert(JSON.stringifyg(props.disposable_mentors));
+    console.log("log funcionando")
+    console.log(JSON.stringify(props.disposable_mentors))
+    console.log('especificamente todas as mentorias')
+    console.log(JSON.stringify(props.disposable_mentors.all_mentorings))
   }, []);
   return (
     <div className={s.mentoring_list}>
       {
+        
+
+        
         props.disposable_mentors.all_mentorings.map(function(mentor) {
           var date = new Date(mentor.data_for_meeting)
-          
+          console.log(`date : ${date}`)
           var date_formatter = new Intl.DateTimeFormat('pt-br',{
             dateStyle : 'short',
           }).format(date)
+          console.log(`date formatted : ${date_formatter}`)
           var time_formatter = new Intl.DateTimeFormat('pt-br',{
             timeStyle : 'short',
           }).format(date)
+          console.log(`time formatted : ${time_formatter}`)
           
 
           return (
@@ -86,7 +109,7 @@ const MentoringList = (props) => {
               <text>Mentoria</text>
               <text>{date_formatter}</text>
               <text>{time_formatter}</text>
-              <Options />
+              <button className = {s.button_selector_mentor} onClick = {async () => await select_mentor(mentor.id)}>Selecionar mentoria</button>
             </div>
           )
 
@@ -98,37 +121,9 @@ const MentoringList = (props) => {
 
 
         })
+        
       }
-      <div>
-        <text>Time 1</text>
-        <text>07/09/2020</text>
-        <text>13:30h</text>
-        <Options />
-      </div>
-      <div>
-        <text>Time 1</text>
-        <text>07/09/2020</text>
-        <text>13:30h</text>
-        <Options />
-      </div>
-      <div>
-        <text>Time 1</text>
-        <text>07/09/2020</text>
-        <text>13:30h</text>
-        <Options />
-      </div>
-      <div>
-        <text>Time 1</text>
-        <text>07/09/2020</text>
-        <text>13:30h</text>
-        <Options />
-      </div>
-      <div>
-        <text>Time 1</text>
-        <text>07/09/2020</text>
-        <text>13:30h</text>
-        <Options />
-      </div>
+      
     </div>
   );
 };
@@ -142,53 +137,9 @@ const Dashboard = (props) => (
     </div>
   </div>
 );
-/*
-// apenas no lado do servidor, ou seja, nenhum console.log funcionará aqui
-export async function getServerSideProps(context) {
 
-  var token = localStorage.getItem("token");
   
-
-  const options = {
-      method: "GET",
-      headers: new Headers({'Access-Control-Allow-Origin': '*',
-      "authorization" : "Bearer " + token,
-    }),
-      mode: 'cors',
-      
-      
-    };
-    
-    const result = await fetch(url,options);
-    alert(typeof result)
-    alert(JSON.stringify(result))
-
-
-  //capturando a informação
-  const url = "http://127.0.0.1:8000/etc/mentors"
-  const resultado = await result.json();
-
-
-  const data = "Henrique Mauler Borges - getstaticprops";
-  const information = await fetch(
-    "https://api.github.com/repos/vercel/next.js"
-  );
-  //const internal_ = await fetch('/api/endpointer');
-
-  return {
-    props: {
-      data: data,
-      resultado : resultado,
-      information: await information.json(),
-    },
-  };
-}
-*/
-
-async function getMentors() {
-
-}
-
+// alert
 export default function Main(props) {
   const api = axios.create({
       baseURL : 'http://localhost:8000',
@@ -199,12 +150,12 @@ export default function Main(props) {
   api.defaults.headers.post["Access-Control-Allow-Method"] = "*";
   api.defaults.headers.post["Content-Type"] = "application/json;charset=utf-8";
   api.defaults.withCredentials = true;
-  const [disposable_mentors,set_mentor_object] = useState({})
+  const [disposable_mentors,set_mentor_object] = useState(null)
 
 
   useEffect(() => {
     var token = localStorage.getItem("token");
-    alert("token: " + token);
+    // alert("token: " + token);
    
 
     const url = "etc/mentors";
@@ -219,14 +170,17 @@ export default function Main(props) {
       resultado.then(function(e) {
         
         set_mentor_object(e.data);
+        // alert(disposable_mentors);
       })
     } catch(error) {
-      alert("algo de errado não está certo");
+      // alert("algo de errado não está certo");
     }
 
 
   },[]);
 
+
+  
   return (
     <div className={s.container}>
       <Sidebar />

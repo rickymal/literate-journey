@@ -11,7 +11,7 @@ export default function Main({User}){
     const [team,set_team] = useState("")
     const [hasTeam, set_hasTeam] = useState(false);
 
-    alert("teste");
+    // alert("teste");
 
     useEffect(function() {
         var data = localStorage.getItem("mecathon_global_variables");
