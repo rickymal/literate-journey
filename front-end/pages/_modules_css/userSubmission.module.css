@@ -1,0 +1,124 @@
+.container {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.attachment_textbox_view {
+  background-color: #ebf2f5;
+}
+
+.third_dashboard {
+  display: flex;
+  flex-direction: row;
+
+  flex: 1;
+  max-height: 90%;
+  background-color: #ffffff;
+}
+
+.dashboard_mainly {
+  display: flex;
+  flex-direction: column;
+  background-color: #ebf2f5;
+  flex: 1;
+  padding-left: 15px;
+  align-items: center;
+}
+
+.text_styles_default {
+  color: #7a7a7a;
+  font-size: 20px;
+}
+
+.text_submition {
+  color: #464749;
+  border: none;
+  margin-right: 5px;
+  margin-left: 5px;
+  font-size: 20px;
+}
+
+input.textbox {
+  color: black;
+  height: 30px;
+  width: auto;
+  background-color: #ebf2f5;
+  border: none;
+  margin-right: 5px;
+  margin-left: 5px;
+  margin-bottom: 15px;
+}
+
+textarea.textbox {
+  color: black;
+
+  width: auto;
+  background-color: #ebf2f5;
+  border: none;
+  margin-right: 5px;
+  margin-left: 5px;
+  margin-bottom: 5px;
+}
+
+.partial_dashboard_view {
+  display: flex;
+  flex-direction: column;
+  width: 500px;
+}
+.partial_dashboard_view:last-child {
+  display: flex;
+  flex-direction: column;
+  width: 500px;
+  align-items: center;
+}
+
+.third_dashboard div.partial_dashboard_view:first-child {
+  display: flex;
+  flex-direction: column;
+
+  margin-right: 5px;
+  padding-left: 5px;
+}
+.third_dashboard div.partial_dashboard_view:last-child {
+  display: flex;
+  flex-direction: column;
+
+  margin-left: 5px;
+  padding-right: 5px;
+  padding-left: 5px;
+  padding-bottom: 5px;
+}
+
+.attachment_button {
+  background-color: #e3792f;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  border: none;
+  font-weight: bold;
+
+  padding: 10px 20px;
+}
+
+.send_button {
+  background-color: #235e9d;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  border: none;
+  padding: 1px 20px;
+  margin-right: 15px;
+  height: stretch;
+  max-height: 30px;
+  margin-top: 100%;
+  align-self: flex-end;
+  font-weight: bold;
+}
+
+div.dashboard_mainly text.submition_project {
+  font-size: 50px;
+  margin-bottom: 30px;
+}
