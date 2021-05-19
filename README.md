@@ -53,13 +53,21 @@
 
 #### Para inicializar o projeto siga com seu terminal as seguintes etapas:
 > git clone [url do repositório]
+
 > cd back-end\node-backend\
+
 > npm install
+
 > npm run dev
+
 > cd ..
+
 > cd ..
+
 > cd front-end
+
 > npm install
+
 > npm run dev
 
 
