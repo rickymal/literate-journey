@@ -1,4 +1,4 @@
-# Projeto Mecathon
+# Projeto Jornada do evento
 ## Projeto cujo foco é desenvolver uma plataforma online similar à Shawee, porém específicamente para projetos de engenheria mecânica
 ### Programada com front-end em Next.js e back-end com NodeJs utilizando apenas o express. :sunglasses:
 ### houve uma tentativa de desenvolver primeiramente utilizando o back-end com django mas houve vários problemas, porém este back-end pode ser visto no repositório :disappointed:
