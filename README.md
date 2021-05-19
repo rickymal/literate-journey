@@ -9,11 +9,25 @@
 
 
 ### O projeto conta com alguns recursos :checkered_flag:
-#### apenas por Back-end
+#### apenas por Back-end em Node.js
 - Criação de usuário 
 - Criação de avaliadores
 - Criação de mentores
 - Criação de desafios
+- Busca por times
+- Seleção de times
+
+#### apenas por Back-end em Python (django)
+- Criação de mentoria
+- Seleção de mentoria
+- Criação de conta
+    - avaliador
+    - mentor
+    - estudante
+- Buscar por times
+- Seleção do desafio
+- Criação de desafios
+-
 
 
 #### Com o front-end
@@ -35,7 +49,7 @@
     - Aprendi a trabalhar e operar melhor os bancos de dados, incluindo as queries em SQL como INNER JOIN e OUTER JOIN
 
 
-
+#### Foi utilizaod o banco de dados dentro criado dentro do back-end 
 
 #### Para inicializar o projeto siga com seu terminal as seguintes etapas:
 > git clone [url do repositório]
